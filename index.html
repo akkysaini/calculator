@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+    <script src="calculator.js" defer></script>
+</head>
+
+<body>
+
+    <div class="container bg-color">
+
+        <div class="calculator">
+
+            <table>
+                <tr>
+                    <td colspan="4"><input class="white bg-color" placeholder="0" type="text" id="result" /></td>
+                </tr>
+                <tr>
+                    <!-- clr() function will call clr to clear all value -->
+                    <td style="width: 26%;"><input class="bg-gray black" type="button" value="C" onclick="clr()" />
+                    </td>
+                    <td style="width: 26%;"><input class="bg-gray black" type="button" value="⌫" onclick="del()" />
+                    </td>
+                    <td style="width: 26%;"><input class="bg-gray black" type="button" value="&#37"
+                            onclick="dis('%')" /> </td>
+                    <td style="width: 26%;"><input class="bg-yellow white" type="button" value="&#xF7"
+                            onclick="dis('/')" />
+                    </td>
+                </tr>
+                <tr>
+                    <!-- create button and assign value to each button -->
+                    <!-- dis("1") will call function dis to display value -->
+                    <td><input class="bg-dark-gray white" type="button" value="7" onclick="dis('7')" /> </td>
+                    <td><input class="bg-dark-gray white" type="button" value="8" onclick="dis('8')" /> </td>
+                    <td><input class="bg-dark-gray white" type="button" value="9" onclick="dis('9')" /> </td>
+                    <td><input class="bg-yellow white" type="button" value="x" onclick="dis('*')" /> </td>
+                </tr>
+                <tr>
+                    <td><input class="bg-dark-gray white" type="button" value="4" onclick="dis('4')" /> </td>
+                    <td><input class="bg-dark-gray white" type="button" value="5" onclick="dis('5')" /> </td>
+                    <td><input class="bg-dark-gray white" type="button" value="6" onclick="dis('6')" /> </td>
+                    <td><input class="bg-yellow white" type="button" value="&#8722" onclick="dis('-')" /> </td>
+                </tr>
+                <tr>
+                    <td><input class="bg-dark-gray white" type="button" value="1" onclick="dis('1')" /> </td>
+                    <td><input class="bg-dark-gray white" type="button" value="2" onclick="dis('2')" /> </td>
+                    <td><input class="bg-dark-gray white" type="button" value="3" onclick="dis('3')" /> </td>
+                    <td><input class="bg-yellow white" type="button" value="+" onclick="dis('+')" /> </td>
+                </tr>
+                <tr>
+                    <td><input class="bg-dark-gray white" type="button" value="00" onclick="dis('00')" /> </td>
+                    <td><input class="bg-dark-gray white" type="button" value="0" onclick="dis('0')" /> </td>
+                    <td><input class="bg-dark-gray white" type="button" value="." onclick="dis('.')" /> </td>
+                    <!-- solve function call function solve to evaluate value -->
+                    <td><input class="bg-yellow white" type="button" value="=" onclick="solve()" /> </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        //function that display value
+        let outputScreen = document.getElementById("result");
+        function dis(val) {
+            outputScreen.value += val;
+        }
+
+        //function that evaluates the digit and return result
+        function solve() {
+            try {
+                outputScreen.value = eval(outputScreen.value);
+            }
+            catch (err) {
+                alert("Invalid Input");
+            }
+        }
+
+        //function that clear the display
+        function clr() {
+            outputScreen.value = "";
+        }
+
+        //function that delete a digit from last
+        function del() {
+            // outputScreen.value = outputScreen.value.substr(0, outputScreen.value.length - 1);
+            outputScreen.value = outputScreen.value.slice(0, -1);
+        }
+    </script>
+</body>
+
+</html>
